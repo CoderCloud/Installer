@@ -1,0 +1,62 @@
+name: Installer
+version: ${project.version}
+authors: [CoderCloud]
+main: me.codercloud.installer.InstallerPlugin
+
+commands:
+  inst:
+    usage: /<command>
+    aliases: [installer]
+    description: Main command of the Installer plugin
+    
+permissions:
+  installer.*:
+    description: Gives access to all installer commands
+    default: op
+    children:
+      installer.install: true
+      installer.enable: true
+      installer.disable: true
+      installer.uninstall: true
+      
+  installer.install:
+    description: Allows to install plugins from bukkit
+    default: op
+    children:
+      installer.help: true
+  
+  installer.urlinstall:
+    description: Allows to install plugins from any url
+    default: op
+    children:
+      installer.install: true
+  
+  installer.help:
+    description: Installer help command
+    default: true
+    
+  installer.enable:
+    description: Allows to enable disabled plugins
+    default: op
+    children:
+      installer.pluginmanager: true
+  
+  installer.disable:
+    description: Allows to disable enabled plugins
+    default: op
+    children:
+      installer.pluginmanager: true
+    
+  installer.uninstall:
+    description: Allows to uninstall plugins
+    default: op
+    children:
+      installer.pluginmanager: true
+    
+  installer.pluginmanager:
+    description: Allows to open the pluginmanager
+    default: op
+    children:
+      installer.help: true
+    
+  
